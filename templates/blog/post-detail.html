@@ -1,22 +1,44 @@
 {% extends "base.html" %}
-{% load blog_extras %}
-{% block content %}
-<h2>{{ post.title }}</h2>
-{% row %}
-  <div class="col">
-      {% include "blog/post-byline.html" %}
-  </div>
-{% endrow %}
-{% row %}
-  <div class="col">
-      {{ post.content|safe }}
-  </div>
-{% endrow %}
+{% load blog_extras cache %}
+{% block content %} 
 
+<!-- Blog Title -->
+<h2>{{ post.title }}</h2> 
+
+<!-- Author and Date of Post -->
 {% row %}
-  {% col %}
-      {% recent_posts post %}
-  {% endcol %}
+    {% col %}
+        {% include "blog/post-byline.html" %}
+    {% endcol %}
 {% endrow %}
+<!-- Hero Image -->
+{% if post.hero_image %}
+    {% row %}
+        {% col %}
+            <img class="img-fluid" src="{{ post.hero_image.url }}">
+        {% endcol %}
+    {% endrow %}
+{% endif %}
+
+<!-- Post Content (main body of text) -->
+{% row %}
+    {% col %}
+        {{ post.content|safe }}
+    {% endcol %}
+{% endrow %}
+<br>
+
+<!-- Author Profile Model and Bio -->
+{% if post.author.profile %}
+    {% row %}
+        {% col %}
+            <h4>About the author</h4>
+            <p>{{ post.author.profile.bio }}</p>
+        {% endcol %}
+    {% endrow %}
+{% endif %}
+
+<!-- Comment Form -->
+{% include "blog/post-comments.html" %}
 
 {% endblock %}
