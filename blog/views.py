@@ -17,6 +17,10 @@ def index(request):
     logger.debug("Got %d posts", len(posts))
     return render(request, "blog/index.html", {"posts": posts})
 
+#remove, only for codio
+def get_ip(request):
+  from django.http import HttpResponse
+  return HttpResponse(request.META['REMOTE_ADDR'])
 
 def post_detail(request, slug):
     # Returns the Post Content field
