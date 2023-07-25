@@ -39,6 +39,8 @@ SESSION_COOKIE_SAMESITE = 'None'
 
 # Application definition
 
+AUTH_USER_MODEL = "blango_auth.User"
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -55,6 +57,7 @@ INSTALLED_APPS = [
     "blog",
     "crispy_forms",
     "crispy_bootstrap5",
+    "blango_auth",
 ]
 
 MIDDLEWARE = [
