@@ -1,6 +1,4 @@
-# blango
-
-Starting point for the Advanced Django course. This is the equivalent of the following command:
+# Blango Django course.
 
 ```bash
 $ django-admin.py startproject blango
